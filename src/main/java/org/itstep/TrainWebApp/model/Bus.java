@@ -4,6 +4,7 @@ package org.itstep.TrainWebApp.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
 @Setter
@@ -20,5 +21,8 @@ public class Bus {
     private String model;
     private int countOfSits;
     private String regNumber;
+
+    @OneToMany(mappedBy = "bus")
+    Set<Ticket> tickets = new HashSet<>();
 
 }

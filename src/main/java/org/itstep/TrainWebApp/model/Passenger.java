@@ -22,4 +22,7 @@ public class Passenger {
     private String lastName;
     private String phone;
     private String email;
+
+    @OneToOne
+    Ticket ticket;
 }

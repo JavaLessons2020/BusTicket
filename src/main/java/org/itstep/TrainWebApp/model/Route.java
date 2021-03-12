@@ -5,9 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Data
@@ -23,5 +24,8 @@ public class Route {
     private String endPoint;
     private LocalDateTime departure;
     private LocalDateTime arrival;
+
+    @OneToMany(mappedBy = "route")
+    Set<Ticket> tickets = new HashSet<>();
 
 }

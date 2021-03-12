@@ -2,9 +2,33 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Bus ticket</title>
 </head>
 <body>
-    Hello <span th:text ="${last_name}"></span>
+<form th:action="@{/logout}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    <input type="submit" value="Logout">
+</form>
+<form th:action="@{/bus/home}" method="post">
+    Откуда
+    <br>
+    <label>
+        <input type="text" placeholder="откуда" name="start">
+    </label>
+    <br>
+    <label>
+        Куда
+        <br>
+        <input type="text" placeholder="куда" name="end">
+    </label>
+    <br>
+    <input type="submit" value="Поехали">
+</form>
+
+<div th:each="route:${routes}">
+    <div th:text="${route.startPoint}"></div>
+    <div th:text="${route.endPoint}"></div>
+</div>
+
 </body>
 </html>
